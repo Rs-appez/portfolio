@@ -1,7 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import dynamic from "next/dynamic";
 
-import NavBar from "@/app/ui/nav-bar";
+const NavBar = dynamic(() => import("@/app/ui/nav-bar"));
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
