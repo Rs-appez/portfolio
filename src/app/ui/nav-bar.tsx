@@ -15,7 +15,7 @@ export default function NavBar() {
   const pathname = usePathname();
   return (
     <>
-      <div className="flex flex-row justify-center bg-gray-100">
+      <div className="flex flex-row justify-center bg-foreground">
         {links.map((link) => {
           const isActive = pathname === link.href;
 
@@ -26,8 +26,8 @@ export default function NavBar() {
               className={clsx(
                 "text-lg font-semibold p-5 align-middle",
                 isActive
-                  ? "text-blue-500"
-                  : "text-gray-700 hover:text-blue-500",
+                  ? "text-selected"
+                  : "text-background hover:text-selected",
               )}
             >
               <p>{link.name}</p>
