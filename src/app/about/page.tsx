@@ -10,7 +10,7 @@ export default function About() {
           alt="Picture of the author"
           width={500}
           height={500}
-          className="rounded-full border-4 border-gray-500"
+          className="rounded-full border-4 border-foreground"
         />
         <p className="text-lg font-semibold p-5">
           I am a junior developer with a passion for learning and growing in the
