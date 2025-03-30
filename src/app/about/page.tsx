@@ -6,10 +6,10 @@ export default function About() {
       <h1 className="text-7xl font-bold p-5">About</h1>
       <div className="flex items-center p-5">
         <Image
-          src="/profile.png"
+          src="/profile.webp"
           alt="Picture of the author"
           width={500}
-          height={500}
+          height={600}
           className="rounded-full border-4 border-foreground"
         />
         <div className="flex flex-col  item-left p-5">
