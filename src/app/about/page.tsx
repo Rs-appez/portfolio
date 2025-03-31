@@ -19,8 +19,13 @@ export default function About() {
           </p>
 
           <p className="text-lg font-semibold p-2">
+            In my spare time, I like to develop and deploy various projects. I
+            publish them on my github.
+          </p>
+
+          <p className="text-lg font-semibold p-2">
             I mainly develop in Python (Django/Django REST Framework). In my
-            spare time, I like to develop various projects. I publish and deploy
+            spare time, I like to develop and deploy various projects. I publish
             them on my github.
           </p>
 
