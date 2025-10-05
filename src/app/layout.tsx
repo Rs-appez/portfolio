@@ -5,28 +5,37 @@ import dynamic from "next/dynamic";
 const NavBar = dynamic(() => import("@/app/ui/nav-bar"));
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+    variable: "--font-geist-mono",
+    subsets: ["latin"],
 });
 
-export default function RootLayout({
-  children,
+export default async function RootLayout({
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col`}
-      >
-        <NavBar />
-        <main className="flex-grow"> {children}</main>
-      </body>
-    </html>
-  );
+    const res = await fetch(`${process.env.API_URL}files/api/resume/latest/`, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `${process.env.API_TOKEN}`,
+        },
+        cache: "no-store",
+    });
+    const data = await res.json();
+    const resumeUrl = data.file;
+    return (
+        <html lang="en">
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col`}
+            >
+                <NavBar resumeUrl={resumeUrl} />
+                <main className="flex-grow"> {children}</main>
+            </body>
+        </html>
+    );
 }
