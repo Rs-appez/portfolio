@@ -19,6 +19,7 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    let resumeUrl = "";
     const res = await fetch(`${process.env.API_URL}files/api/resume/latest/`, {
         headers: {
             "Content-Type": "application/json",
@@ -26,8 +27,10 @@ export default async function RootLayout({
         },
         cache: "no-store",
     });
-    const data = await res.json();
-    const resumeUrl = data.file;
+    if (res.ok) {
+        const data = await res.json();
+        resumeUrl = data.file;
+    }
     return (
         <html lang="en">
             <body
